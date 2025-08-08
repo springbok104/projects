@@ -1,0 +1,304 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header-wrapper {
+  height: 230px;
+  position: relative;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: skyblue;
+  color: #fff;
+  z-index: 5;
+  height: 200px;
+  overflow: hidden;
+  transition: all 0.4s;
+  text-align: center;
+  padding-top: 1%;
+  border-bottom: 1px solid darkblue;
+}
+
+.header h1,
+.header h2,
+.header h3 {
+  display: inline;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  font-size: 200%;
+  color: #256dbb;
+}
+
+.header h2 {
+  font-size: 180%;
+  color: #3484da;
+}
+
+.header h3 {
+  font-size: 160%;
+  color: #4293eb;
+}
+
+.header p {
+  font-size: 120%;
+  padding: 10px;
+  color: white;
+}
+
+.header p:last-child {
+  font-size: 100%;
+}
+
+.header.shrink {
+  height: 90px;
+  line-height: 60px;
+  background-color: rgb(109, 184, 224);
+}
+
+.usage-wrapper {
+  position: fixed;
+  top: 190px;
+  width: 95%;
+  height: 40px;
+  left: 2.5%;
+  background-color: #ddd;
+  border-radius: 10px;
+  z-index: 10;
+  transition: all 0.4s;
+}
+
+.usage-wrapper.shrink {
+  top: 90px;
+  margin: 0 auto;
+  background-color: #ddd;
+  border-radius: 10px;
+  border: 2px solid rgb(51, 170, 206);
+}
+
+#usage-bar {
+  width: 0%;
+  height: 35px;
+  background-color: #80bbfa;
+  font-size: 140%;
+  text-align: center;
+  border-radius: 10px;
+  line-height: 35px;
+  padding-bottom: 5px;
+  color: white;
+  transition: width 0.8s ease-in-out;
+}
+
+.main-section {
+  max-width: 100%;
+}
+
+.section-bar {
+  display: flex;
+  margin: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.household-bar {
+  background-color: #7633cd;
+}
+
+.shower-bar {
+  background-color: #3eafd4;
+}
+
+.hands-bar {
+  background-color: #19ad7e;
+}
+
+.face-bar {
+  background-color: #c7da43;
+}
+
+.teeth-bar {
+  background-color: #dac800;
+}
+
+.toilet-bar {
+  background-color: #1fd386;
+}
+
+.laundry-bar {
+  background-color: #f5b452;
+}
+
+.dishes-bar {
+  background-color: #ffb800;
+}
+
+.drinking-bar {
+  background-color: #ff800a;
+}
+
+.pets-bar {
+  background-color: #d17878;
+}
+
+.left {
+  flex: 2;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.household-bar .left {
+  align-items: center;
+}
+
+.left-image {
+display: block;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+}
+
+.left-subtext {
+  padding: 0.5em 1em 0.5em 1em;
+  background-color: #ffffff;
+  border-radius: 8px 8px 0 0;
+  max-width: 600px;
+  margin-top: 1em;
+}
+
+.description,
+.usage-tip {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #004d60;
+  margin-bottom: 0.4em;
+}
+
+.right {
+  width: 50%;
+  padding: 1em;
+  background-color: #2e2e2e;
+  color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.bar-total-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.bar-total-litres {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #f0f0f0;
+}
+
+.bar-total-litres-value {
+  width: 5rem;
+  height: 2em;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  font-size: 1rem;
+  margin-left: 10px;
+  color: #87ceeb;
+}
+
+.ui-widget-header {
+  background-color: #20b68c;
+}
+
+.ui-slider-range {
+  width: 50%;
+  height: 10px;
+}
+
+.ui-slider-handle {
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #20b68c;
+}
+
+.counter-sections {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.countbutton {
+  width: 3.5em;
+  height: 3.5em;
+  border-radius: 50%;
+  border: none;
+  background-color: #fff;
+  margin: 0 0.3em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.slider-result {
+  height: 2em;
+  width: 5em;
+  text-align: center;
+  font-size: 1.5em;
+  border: none;
+  border-radius: 5px;
+  margin: 1em;
+}
+
+.right-buttons {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.bar-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.bar-button:hover {
+  background-color: #45a049;
+}
+
+.bar-button.active {
+  background-color: #2e7d32;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+footer {
+  margin-top: 10px;
+  padding: 5px;
+  text-align: center;
+  background-color: skyblue;
+  color: darkblue;
+  font-size: 14px;
+}

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Water Usage Calculator">
+    <meta name="keywords" content="water usage, cape town, calculator, water, drought, how much" <title>Calculate your
+    water usage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/calculate.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/calculator.js"></script>
+
+</head>
+
+<body>
+    <div class="header-wrapper">
+        <div class="header">
+            <h1>What's </h1>
+            <h2>my </h2>
+            <h3>usage? </h3>
+            <p>
+                Use the below tool to help approximate your daily water consumption for your household.
+            </p>
+            <p>
+                With the dams nearing 20% useable water left, we must ensure we are as frugal with water as possible
+            </p>
+        </div>
+        <div class="average"></div>
+        <div id="usage-wrapper" class="usage-wrapper">
+            <div id="usage-bar" class="usage-bar"></div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="household-bar section-bar">
+            <div class="left">
+                <img class="left-image" src="assets/family.svg" />
+            </div>
+            <div class="right">
+                <h3>How many people are in your household?</h3>
+                <h5>This is used to generate a daily average per person and is completely optional</h5>
+                <div class="slider-wrapper">
+                    <input class="slider-result" id="household-number" readonly>
+                    <div id="household-slider"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="shower-bar section-bar">
+        <div class="left">
+            <img class="left-image" src="assets/shower.svg" />
+            <div class="left-subtext">
+                <p class="description">
+                    Showers can be deceptively water-intensive—especially with older or high-flow heads.
+                </p>
+                <ul class="usage-amount">
+                    <li>Low-Flow Showerhead – 5 min <span class="amount-badge">40–60 ℓ</span></li>
+                    <li>Standard Showerhead – 5 min <span class="amount-badge">80–100 ℓ</span></li>
+                    <li>High-Flow Showerhead – 5 min <span class="amount-badge">100–120 ℓ</span></li>
+                    <li>Average South African Shower – 5 min <span class="amount-badge">90 ℓ</span></li>
+                </ul>
+                <p class="usage-tip">
+                    <em>Tip:</em> A 5-minute shower with a standard head can match a full bath in water use. Swapping to
+                    low-flow
+                    fixtures or using a timer can cut usage by up to 50%.
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <h3>Showers</h3>
+            <h5>How many times per day are showers taken?</h5>
+            <div class="bar-total-wrapper">
+                <span class="bar-total-litres">Total:</span>
+                <input class="bar-total-litres-value" id="shower-total-litres-value" value="0 ℓ" readonly></input>
+            </div>
+            <div class="counter-sections">
+                <input id="subtract" class="countbutton" data-type="shower" type="image"
+                    src="assets/icons8-minus.svg" />
+                <input class="slider-result" id="shower-total" value="0" readonly>
+                <input id="addition" class="countbutton" data-type="shower" type="image" src="assets/icons8-plus.svg" />
+            </div>
+            <div class="right-buttons">
+                <a class="bar-button" href="#" data-type="shower" data-value="40">Low-Flow - 5m</a>
+                <a class="bar-button" href="#" data-type="shower" data-value="80">Standard - 5m</a>
+                <a class="bar-button" href="#" data-type="shower" data-value="100">High-Flow - 5m</a>
+                <a class="bar-button" href="#" data-type="shower" data-value="90">Average Shower - 5m</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="hands-bar section-bar">
+        <div class="left">
+            <img class="left-image" src="assets/hand-washing.svg" />
+            <div class="left-subtext">
+                <p class="description">
+                    A proper handwash should use less than 2 ℓ of water if done efficiently.
+                </p>
+                <ul class="usage-amount">
+                    <li>Rinse Only: Splash from a basin or cup <span class="amount-badge">1 ℓ</span></li>
+                    <li>Running Tap – 20 sec (Low): WHO-recommended scrub duration <span
+                            class="amount-badge">1.5 ℓ</span>
+                    </li>
+                    <li>Running Tap – 20 sec (Fast): High flow <span class="amount-badge">3 ℓ</span></li>
+                    <li>Running Tap – 40 sec (Fast): Left open during full wash <span class="amount-badge">6 ℓ</span>
+                    </li>
+                </ul>
+                <p class="usage-tip">
+                    <em>Tip:</em> Up to 55% of water during hand
+                    is wasted when the tap runs while lathering. Turn it off between steps to halve your usage.
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <h3>Hand Washing</h3>
+            <h5>Roughly how often do people wash their hands?</h5>
+            <div class="bar-total-wrapper">
+                <div class="bar-total-litres">Total:</div>
+                <input class="bar-total-litres-value" id="hands-total-litres-value" value="0 ℓ" readonly>
+            </div>
+            <div class="counter-sections">
+                <input id="subtract" class="countbutton" data-type="hands" data-value="0.200" type="image"
+                    src="assets/icons8-minus.svg" />
+                <input class="slider-result" id="hands-total" value="0" readonly>
+                <input id="addition" class="countbutton" data-type="hands" data-value="0.200" type="image"
+                    src="assets/icons8-plus.svg" />
+            </div>
+            <div class="right-buttons">
+                <a class="bar-button" href="#" data-type="hands" data-value="1">Rinse</a>
+                <a class="bar-button" href="#" data-type="hands" data-value="1.5">Running slow - 20s</a>
+                <a class="bar-button" href="#" data-type="hands" data-value="3">Running fast - 20s</a>
+                <a class="bar-button" href="#" data-type="hands" data-value="6">Running - 40s</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="toilet-bar section-bar">
+        <div class="left">
+            <img class="left-image" src="assets/toilet-paper.svg" />
+            <div class="left-subtext">
+                <p class="description">
+                    Toilet flushing is one of the highest water-use activities in a household.
+                </p>
+                <ul class="usage-amount">
+                    <li>Modern Dual-Flush – Half Flush <span class="amount-badge">3 ℓ</span></li>
+                    <li>Modern Dual-Flush – Full Flush <span class="amount-badge">6 ℓ</span></li>
+                    <li>Standard Gravity Toilet (Post-1992) <span class="amount-badge">6–9 ℓ</span></li>
+                    <li>Older Toilet (Pre-1992) <span class="amount-badge">13–20 ℓ</span></li>
+                    <li>South African Average Toilet <span class="amount-badge">11 ℓ</span></li>
+                </ul>
+                <p class="usage-tip">
+                    <em>Tip:</em> Consider retrofitting older toilets with displacement devices or switching to
+                    dual-flush
+                    models to save up to 50% per flush.
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <h3>Toilet</h3>
+            <h5>Approximately, how many flushes per day?</h5>
+            <div class="bar-total-wrapper">
+                <div class="bar-total-litres">Total:</div>
+                <input class="bar-total-litres-value" id="toilet-total-litres-value" value="0 ℓ" readonly>
+            </div>
+            <div class="counter-sections">
+                <input id="subtract" class="countbutton" data-type="toilet" data-value="" type="image"
+                    src="assets/icons8-minus.svg" />
+                <input class="slider-result" id="toilet-total" value="0" readonly>
+                <input id="addition" class="countbutton" data-type="toilet" data-value="" type="image"
+                    src="assets/icons8-plus.svg" />
+            </div>
+            <div class="right-buttons">
+                <a class="bar-button" href="#" data-type="toilet" data-value="3">Half Flush (Dual-Flush)</a>
+                <a class="bar-button" href="#" data-type="toilet" data-value="6">Full Flush (Dual-Flush)</a>
+                <a class="bar-button" href="#" data-type="toilet" data-value="8">Standard (Post 1992)</a>
+                <a class="bar-button" href="#" data-type="toilet" data-value="16">Older Toilet (Pre 1992)</a>
+                <a class="bar-button" href="#" data-type="toilet" data-value="11">SA Standard</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="face-bar section-bar">
+        <div class="left">
+            <img class="left-image" src="assets/soap.svg" />
+            <div class="left-subtext">
+                <p class="description">
+                    A quick face wash should use less than 2 ℓ of water.
+                </p>
+                <ul class="usage-amount">
+                    <li>Rinse Only: Splash from a basin or cup <span class="amount-badge">1 ℓ</span></li>
+                    <li>Running Tap – 30 sec (Low): Light flow <span class="amount-badge">1.5 ℓ</span></li>
+                    <li>Running Tap – 30 sec (Fast): High flow <span class="amount-badge">3 ℓ</span></li>
+                    <li>Running Tap – 1 min (Fast): Left open during wash <span class="amount-badge">6 ℓ</span></li>
+                </ul>
+                <p class="usage-tip">
+                    <em>Tip:</em> Use lukewarm water for best skin health—hot water can irritate, cold water may not
+                    cleanse
+                    effectively.
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <h3>Face</h3>
+            <h5>How many washes per day?</h5>
+            <div class="bar-total-wrapper">
+                <div class="bar-total-litres">Total:</div>
+                <input class="bar-total-litres-value" id="face-total-litres-value" value="0 ℓ" readonly>
+            </div>
+            <div class="counter-sections">
+                <input id="subtract" class="countbutton" data-type="face" data-value="" type="image"
+                    src="assets/icons8-minus.svg" />
+                <input class="slider-result" id="face-total" value="0" readonly>
+                <input id="addition" class="countbutton" data-type="face" data-value="" type="image"
+                    src="assets/icons8-plus.svg" />
+            </div>
+            <div class="right-buttons">
+                <a class="bar-button" href="#" data-type="face" data-value="1">Rinse</a>
+                <a class="bar-button" href="#" data-type="face" data-value="1.5">Running Tap - 30s (low)</a>
+                <a class="bar-button" href="#" data-type="face" data-value="3">Running Tap - 30s (fast)</a>
+                <a class="bar-button" href="#" data-type="face" data-value="6">Running Tap - 60s (fast))</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="teeth-bar section-bar">
+        <div class="left">
+            <img class="left-image" src="assets/toothbrush.svg" />
+            <div class="left-subtext">
+                <p class="description">
+                    Brushing your teeth should not require more than 1 ℓ of water.
+                </p>
+                <ul class="usage-amount">
+                    <li>Rinse Only: Quick splash from a cup or tap <span class="amount-badge">0.75 ℓ</span></li>
+                    <li>Running Tap – 1 min (Low): Light flow, no aerator <span class="amount-badge">2 ℓ</span></li>
+                    <li>Running Tap – 1 min (Fast): High flow <span class="amount-badge">6 ℓ</span></li>
+                    <li>Running Tap – 2 min (Fast): Left open during brushing <span class="amount-badge">8 ℓ</span></li>
+                </ul>
+                <p class="usage-tip">
+                    <em>Tip:</em> Turn off the tap while brushing—this simple habit can save up to 4 gallons per
+                    session.
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <h3>Brushing Teeth</h3>
+            <h5>How many brushes per day?</h5>
+            <div class="bar-total-wrapper">
+                <div class="bar-total-litres">Total:</div>
+                <input class="bar-total-litres-value" id="teeth-total-litres-value" value="0 ℓ" readonly>
+            </div>
+            <div class="counter-sections">
+                <input id="subtract" class="countbutton" data-type="teeth" data-value="" type="image"
+                    src="assets/icons8-minus.svg" />
+                <input class="slider-result" id="teeth-total" value="0" readonly>
+                <input id="addition" class="countbutton" data-type="teeth" data-value="" type="image"
+                    src="assets/icons8-plus.svg" />
+            </div>
+            <div class="right-buttons">
+                <a class="bar-button" href="#" data-type="teeth" data-value="0.75">Rinse</a>
+                <a class="bar-button" href="#" data-type="teeth" data-value="2">Running Tap - 60s (low)</a>
+                <a class="bar-button" href="#" data-type="teeth" data-value="6">Running Tap - 60s (fast)</a>
+                <a class="bar-button" href="#" data-type="teeth" data-value="8">Running Tap - 2m (fast))</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="laundry-bar section-bar">
+        <div class="left">
+            <img class="left-image" src="assets/washing-machine.svg" />
+            <div class="left-subtext">
+                <p class="description">Laundry loads vary, but mindful washing can make a big impact.</p>
+                <ul class="usage-amount">
+                    <li>Small load (eco mode) <span class="amount-badge">50 ℓ</span></li>
+                    <li>Full load <span class="amount-badge">90 ℓ</span></li>
+                    <li>Hand wash basin <span class="amount-badge">10–15 ℓ</span></li>
+                </ul>
+                <p class="usage-tip"><em>Tip:</em> Wash full loads at lower temps when possible.</p>
+            </div>
+        </div>
+        <div class="right">
+            <h3>Washing Machine & Laundry</h3>
+            <h5>How many loads of laundry (whether by hand or machine) are done on a day?</h5>
+            <div class="bar-total-wrapper">
+                <div class="bar-total-litres">Total:</div>
+                <input class="bar-total-litres-value" id="laundry-total-litres-value" value="0 ℓ" readonly>
+            </div>
+            <div class="counter-sections">
+                <input id="subtract" class="countbutton" data-type="laundry" data-value="" type="image"
+                    src="assets/icons8-minus.svg" />
+                <input class="slider-result" id="laundry-total" value="0" readonly>
+                <input id="addition" class="countbutton" data-type="laundry" data-value="" type="image"
+                    src="assets/icons8-plus.svg" />
+            </div>
+            <div class="right-buttons">
+                <a class="bar-button" href="#" data-type="laundry" data-value="50">Small Load (eco)</a>
+                <a class="bar-button" href="#" data-type="laundry" data-value="90">Full Load</a>
+                <a class="bar-button" href="#" data-type="laundry" data-value="12">Hand Wash</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="dishes-bar section-bar">
+        <div class="left">
+            <img class="left-image" src="assets/dish.svg" />
+            <div class="left-subtext">
+                <p class="description">Dishwashing water use depends on your method and frequency.</p>
+                <ul class="usage-amount">
+                    <li>Hand wash (small batch) <span class="amount-badge">10–15 ℓ</span></li>
+                    <li>Hand wash (full sink) <span class="amount-badge">20–30 ℓ</span></li>
+                    <li>Dishwasher (eco mode) <span class="amount-badge">8–12 ℓ</span></li>
+                    <li>Dishwasher (standard cycle) <span class="amount-badge">15–20 ℓ</span></li>
+                </ul>
+                <p class="usage-tip">
+                    <em>Tip:</em> Scrape instead of rinse. Run full loads for best efficiency.
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <h3>Dish Washing</h3>
+            <h5>How many sink-full of dishes are washed per day?</h5>
+            <div class="bar-total-wrapper">
+                <div class="bar-total-litres">Total:</div>
+                <input class="bar-total-litres-value" id="dishes-total-litres-value" value="0 ℓ" readonly>
+            </div>
+            <div class="counter-sections">
+                <input id="subtract" class="countbutton" data-type="dishes" data-value="" type="image"
+                    src="assets/icons8-minus.svg" />
+                <input class="slider-result" id="dishes-total" value="0" readonly>
+                <input id="addition" class="countbutton" data-type="dishes" data-value="" type="image"
+                    src="assets/icons8-plus.svg" />
+            </div>
+            <div class="right-buttons">
+                <a class="bar-button" href="#" data-type="dishes" data-value="12">Hand Wash - Small Batch</a>
+                <a class="bar-button" href="#" data-type="dishes" data-value="25">Hand Wash - Full Sink</a>
+                <a class="bar-button" href="#" data-type="dishes" data-value="10">Dishwasher (eco)</a>
+                <a class="bar-button" href="#" data-type="dishes" data-value="18">Dishwasher Standard</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="drinking-bar section-bar">
+        <div class="left">
+            <img class="left-image" src="assets/water-glass.svg" />
+            <div class="left-subtext">
+                <p class="description">Covers water used in tea, coffee, and direct drinking.</p>
+                <ul class="usage-amount">
+                    <li>Cup: Mug sized portion <span class="amount-badge">250 ml / 0.25 ℓ</span></li>
+                    <li>Average Glass: Tall water glass <span class="amount-badge">350 ml / 0.35 ℓ</span></li>
+                </ul>
+                <p class="usage-tip">
+                    <em>Tip:</em> Reuse boiled water or cool leftovers instead of tipping them out.
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <h3>Drinking Water</h3>
+            <h5>How many cups of water (including coffee) does each person consume per day?</h5>
+            <div class="bar-total-wrapper">
+                <div class="bar-total-litres">Total:</div>
+                <input class="bar-total-litres-value" id="drinking-total-litres-value" value="0 ℓ" readonly>
+            </div>
+            <div class="counter-sections">
+                <input id="subtract" class="countbutton" data-type="drinking" data-value="" type="image"
+                    src="assets/icons8-minus.svg" />
+                <input class="slider-result" id="drinking-total" value="0" readonly>
+                <input id="addition" class="countbutton" data-type="drinking" data-value="" type="image"
+                    src="assets/icons8-plus.svg" />
+            </div>
+            <div class="right-buttons">
+                <a class="bar-button" href="#" data-type="drinking" data-value="0.25">Cup - 250ml</a>
+                <a class="bar-button" href="#" data-type="drinking" data-value="0.35">Average Glass - 350ml</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="pets-bar section-bar">
+        <div class="left">
+            <img class="left-image" src="assets/dog.svg" />
+            <div class="left-subtext">
+                <p class="description">
+                    Make sure your pets stay hydrated, especially in warm weather.
+                </p>
+
+                <ul class="usage-amount">
+                    <li>Small Bowl: Cats or small dogs <span class="amount-badge">1 ℓ</span></li>
+                    <li>Medium Bowl: Mid-sized dogs <span class="amount-badge">1.5 ℓ</span></li>
+                    <li>Large Bowl: Big dogs <span class="amount-badge">3 ℓ</span></li>
+                </ul>
+
+                <p class="usage-tip">
+                    <em>Tip:</em> Refill based on need. Leftover water can be reused for plants.
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <h3>Pets</h3>
+            <h5>How many bowls of water for pets?</h5>
+            <div class="bar-total-wrapper">
+                <div class="bar-total-litres">Total :</div>
+                <input class="bar-total-litres-value" id="pets-total-litres-value" value="0 ℓ" readonly>
+            </div>
+            <div class="counter-sections">
+                <input id="subtract" class="countbutton" data-type="pets" data-value="" type="image"
+                    src="assets/icons8-minus.svg" />
+                <input class="slider-result" id="pets-total" value="0" readonly>
+                <input id="addition" class="countbutton" data-type="pets" data-value="" type="image"
+                    src="assets/icons8-plus.svg" />
+            </div>
+            <div class="right-buttons">
+                <a class="bar-button" href="#" data-type="pets" data-value="1">Small Bowl (also for cats)</a>
+                <a class="bar-button" href="#" data-type="pets" data-value="1.5">Medium Bowl</a>
+                <a class="bar-button" href="#" data-type="pets" data-value="3">Large Bowl</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+            Disclaimer: All water usage values are approximate and based on typical household fixtures. Actual
+            consumption may vary depending on model, pressure, and user behavior. Illustrations by <a
+                href="http://www.freepik.com" title="Freepik">Freepik</a>.
+        </p>
+    </footer>
+
+</body>
+
+</html>
