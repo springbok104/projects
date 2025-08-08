@@ -1,4 +1,4 @@
-# 💧 CT Water Calculator
+# 💧 CT Water Calculator (Archived)
 
 A lightweight browser-based tool built during Cape Town’s 2018 water crisis to help households visualize and manage daily water usage.
 
