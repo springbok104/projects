@@ -11,7 +11,7 @@ Residents were urged to limit personal use to 50 liters per day. This tool was c
 
 **Status:** Archived for reference and historical context. May be modernized in future.
 
-![CT Water Calculator – Pet Water Usage Interface](example.png)  
+<img src="example.png" alt="Example of usage" width="800"/>
 *Interactive section for tracking pet water consumption, with reuse tips and bowl size options*
 
 ## Technical Notes
